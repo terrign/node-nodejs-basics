@@ -1,4 +1,5 @@
-import { blue, RSS_PREFIX, white } from './const.js';
+import { blue } from '../utils/index.js';
+import { RSS_PREFIX } from './const.js';
 
 const parseEnv = () => {
   const args = process.env;
@@ -7,7 +8,7 @@ const parseEnv = () => {
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
     if (key.startsWith(RSS_PREFIX)) {
-      res += blue(key) + white(`=${args[key]}; `);
+      res += `${blue(key)}=${args[key]}; `;
     }
   }
   console.log(res.slice(0, -2));
