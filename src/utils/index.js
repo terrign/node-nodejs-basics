@@ -11,18 +11,24 @@ const exists = (path) =>
     .then(() => true)
     .catch(() => false);
 
-/**
- * Changes color of provided string in console output to blue
- * @param {string} str
- * @returns {string}
- */
-const blue = (str) => `\x1b[34m${str}\x1b[0m`;
+const colorMap = {
+  blue: '\x1b[34m',
+  red: '\x1b[31m',
+  yellow: '\x1b[33m',
+};
 
+const cc = (color) => (str) => `${colorMap[color]}${str}\x1b[0m`;
 /**
- * Changes color of provided string in console output to red
- * @param {string} str
- * @returns {string}
+ * Changes color of string in console to red
  */
-const red = (str) => `\x1b[31m${str}\x1b[0m`;
+const red = cc('red');
+/**
+ * Changes color of string in console to blue
+ */
+const blue = cc('blue');
+/**
+ * Changes color of string in console to yellow
+ */
+const yellow = cc('yellow');
 
-export { exists, blue, red };
+export { exists, blue, red, yellow };
